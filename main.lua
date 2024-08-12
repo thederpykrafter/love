@@ -1,26 +1,14 @@
 _G.love = require("love")
 
----- Color functions ----
-function _G.setColor(r, g, b, a)
-	love.graphics.setColor(r / 255, g / 255, b / 255, a)
-end
-
-function _G.setBackgroundColor(r, g, b, a)
-	love.graphics.setBackgroundColor(r / 255, g / 255, b / 255, a)
-end
-
----- Draw primitives
-function _G.drawRectangle(mode, x1, y1, x2, y2)
-	love.graphics.rectangle(mode, x1, y1, x2, y2)
-end
-
-function _G.drawCircle(mode, x, y, r)
-	love.graphics.circle(mode, x, y, r)
+function _G.debug.drawFPS(x, y)
+	love.graphics.setColor(0, 0, 0, 1)
+	love.graphics.print("FPS:" .. tostring(love.timer.getFPS()), x, y)
+	love.graphics.rectangle("line", 0, 0, 65, 35)
 end
 
 ---- Love Functions ----
 function love.load()
-	setBackgroundColor(50, 50, 50, 0.5)
+	love.graphics.setBackgroundColor(50 / 255, 50 / 255, 50 / 255, 0.5)
 end
 
 function love.update(dt)
@@ -29,8 +17,10 @@ function love.update(dt)
 end
 
 function love.draw()
-	setColor(103, 41, 118, 1)
-	drawRectangle("fill", 20, 20, width - 40, height - 40)
-	setColor(0, 0, 0, 1)
-	drawCircle("line", centerX, centerY, 5)
+	love.graphics.setColor(103 / 255, 41 / 255, 118 / 255, 1)
+
+	love.graphics.setColor(0, 0, 0, 1)
+	love.graphics.circle("line", centerX, centerY, 5)
+
+	debug.drawFPS(10, 10)
 end
