@@ -5,7 +5,11 @@ _G.debug = {}
 
 function debug.drawFPS(x, y)
 	love.graphics.setColor(0, 0, 0, 1)
-	love.graphics.print("FPS:" .. tostring(love.timer.getFPS()), x, y)
+	love.graphics.print(
+		"FPS:" .. tostring(love.timer.getFPS()),
+		x,
+		y
+	)
 	love.graphics.rectangle("line", 0, 0, 65, 35)
 end
 ---- End Debug Stats ----
@@ -24,7 +28,12 @@ end
 
 ---- Love Functions ----
 function love.load()
-	love.graphics.setBackgroundColor(50 / 255, 50 / 255, 50 / 255, 0.5)
+	love.graphics.setBackgroundColor(
+		50 / 255,
+		50 / 255,
+		50 / 255,
+		0.5
+	)
 end
 
 function love.update(dt)
